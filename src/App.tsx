@@ -52,7 +52,7 @@ class App extends Component {
         key={index}
         style={{
           fontWeight: "bold",
-          fontSize: 12,
+          fontSize: 14,
           backgroundColor: timeUnit.backgroundColor,
           color: timeUnit.color,
           border: currentHour === timeUnit.hour ? "3px solid white" : ""
