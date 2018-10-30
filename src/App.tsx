@@ -47,9 +47,11 @@ class App extends Component {
     const currentDateTime = new Date();
     const currentHour = currentDateTime.getHours();
 
-    const timeUnitItems = this.timeUnits.map(timeUnit => (
-      <li
+    const timeUnitItems = this.timeUnits.map((timeUnit, index) => (
+      <div
+        key={index}
         style={{
+          paddingLeft: 0,
           fontWeight: "bold",
           backgroundColor: timeUnit.colour,
           color: "white",
@@ -58,7 +60,7 @@ class App extends Component {
       >
         {this.zeroFill(timeUnit.hour, 2)}
         :00
-      </li>
+      </div>
     ));
 
     return (
@@ -77,7 +79,15 @@ class App extends Component {
             Learn React
           </a>
         </header> */}
-        <ul style={{ listStyleType: "none" }}>{timeUnitItems}</ul>
+        <div
+          style={{
+            margin: 0,
+            listStyleType: "none",
+            listStylePosition: "inside"
+          }}
+        >
+          {timeUnitItems}
+        </div>
       </div>
     );
   }
