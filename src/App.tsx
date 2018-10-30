@@ -1,8 +1,13 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
+import * as React from "react";
+// import logo from "./logo.svg";
 import "./App.css";
 
-class App extends Component {
+interface AppState {
+  intervalId: NodeJS.Timeout | null;
+  currentDateTime: Date;
+}
+
+class App extends React.Component<{}, AppState> {
   timeUnits = [
     { hour: 0, color: "white", backgroundColor: "green" },
     { hour: 1, color: "white", backgroundColor: "green" },
@@ -31,6 +36,20 @@ class App extends Component {
     { hour: 23, color: "white", backgroundColor: "green" }
   ];
 
+  constructor(
+    props: {},
+    state: AppState = {
+      intervalId: null,
+      currentDateTime: new Date()
+    }
+  ) {
+    super(props, state);
+
+    this.state = {
+      ...state
+    };
+  }
+
   zeroFill(value: number, width: number) {
     width -= value.toString().length;
 
@@ -43,7 +62,39 @@ class App extends Component {
     return value + ""; // always return a string
   }
 
+  componentDidMount() {
+    const intervalId = setInterval(() => this.timer(), 1000);
+    // store intervalId in the state so it can be accessed later:
+    this.setState({ intervalId: intervalId });
+  }
+
+  componentWillUnmount() {
+    // use intervalId from the state to clear the interval
+    if (this.state.intervalId) {
+      clearInterval(this.state.intervalId);
+    }
+  }
+
+  timer() {
+    // setState method is used to update the state
+    const currentDateTime = new Date();
+
+    if (this.setState) {
+      this.setState({ currentDateTime: currentDateTime });
+    }
+  }
+
   render() {
+    // if (!this.state) {
+    //   return null;
+    // }
+
+    // const { currentDateTime } = this.state;
+
+    // if (!currentDateTime) {
+    //   return null;
+    // }
+
     const currentDateTime = new Date();
     const currentHour = currentDateTime.getHours();
 
@@ -52,14 +103,15 @@ class App extends Component {
         key={index}
         style={{
           fontWeight: "bold",
-          fontSize: 14,
+          fontSize: currentHour === timeUnit.hour ? 22 : 14,
           backgroundColor: timeUnit.backgroundColor,
           color: timeUnit.color,
           border: currentHour === timeUnit.hour ? "3px solid white" : ""
         }}
       >
-        {this.zeroFill(timeUnit.hour, 2)}
-        :00
+        {currentHour === timeUnit.hour
+          ? currentDateTime.toLocaleTimeString()
+          : this.zeroFill(timeUnit.hour, 2) + ":00"}
       </div>
     ));
 
