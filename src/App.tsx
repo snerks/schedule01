@@ -51,11 +51,11 @@ class App extends Component {
       <div
         key={index}
         style={{
-          paddingLeft: 0,
           fontWeight: "bold",
+          fontSize: 12,
           backgroundColor: timeUnit.colour,
           color: "white",
-          border: currentHour === timeUnit.hour ? "3px solid black" : ""
+          border: currentHour === timeUnit.hour ? "3px solid silver" : ""
         }}
       >
         {this.zeroFill(timeUnit.hour, 2)}
@@ -81,9 +81,7 @@ class App extends Component {
         </header> */}
         <div
           style={{
-            margin: 0,
-            listStyleType: "none",
-            listStylePosition: "inside"
+            margin: 0
           }}
         >
           {timeUnitItems}
