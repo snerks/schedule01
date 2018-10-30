@@ -4,31 +4,31 @@ import "./App.css";
 
 class App extends Component {
   timeUnits = [
-    { hour: 0, colour: "green" },
-    { hour: 1, colour: "green" },
-    { hour: 2, colour: "green" },
-    { hour: 3, colour: "green" },
-    { hour: 4, colour: "green" },
-    { hour: 5, colour: "red" },
-    { hour: 6, colour: "red" },
-    { hour: 7, colour: "orange" },
-    { hour: 8, colour: "green" },
-    { hour: 9, colour: "green" },
-    { hour: 10, colour: "green" },
-    { hour: 11, colour: "green" },
+    { hour: 0, color: "white", backgroundColor: "green" },
+    { hour: 1, color: "white", backgroundColor: "green" },
+    { hour: 2, color: "white", backgroundColor: "green" },
+    { hour: 3, color: "white", backgroundColor: "green" },
+    { hour: 4, color: "white", backgroundColor: "green" },
+    { hour: 5, color: "white", backgroundColor: "red" },
+    { hour: 6, color: "white", backgroundColor: "red" },
+    { hour: 7, color: "black", backgroundColor: "orange" },
+    { hour: 8, color: "white", backgroundColor: "green" },
+    { hour: 9, color: "white", backgroundColor: "green" },
+    { hour: 10, color: "white", backgroundColor: "green" },
+    { hour: 11, color: "white", backgroundColor: "green" },
 
-    { hour: 12, colour: "green" },
-    { hour: 13, colour: "green" },
-    { hour: 14, colour: "green" },
-    { hour: 15, colour: "green" },
-    { hour: 16, colour: "green" },
-    { hour: 17, colour: "red" },
-    { hour: 18, colour: "red" },
-    { hour: 19, colour: "orange" },
-    { hour: 20, colour: "green" },
-    { hour: 21, colour: "green" },
-    { hour: 22, colour: "green" },
-    { hour: 23, colour: "green" }
+    { hour: 12, color: "white", backgroundColor: "green" },
+    { hour: 13, color: "white", backgroundColor: "green" },
+    { hour: 14, color: "white", backgroundColor: "green" },
+    { hour: 15, color: "white", backgroundColor: "green" },
+    { hour: 16, color: "white", backgroundColor: "green" },
+    { hour: 17, color: "white", backgroundColor: "red" },
+    { hour: 18, color: "white", backgroundColor: "red" },
+    { hour: 19, color: "black", backgroundColor: "orange" },
+    { hour: 20, color: "white", backgroundColor: "green" },
+    { hour: 21, color: "white", backgroundColor: "green" },
+    { hour: 22, color: "white", backgroundColor: "green" },
+    { hour: 23, color: "white", backgroundColor: "green" }
   ];
 
   zeroFill(value: number, width: number) {
@@ -53,9 +53,9 @@ class App extends Component {
         style={{
           fontWeight: "bold",
           fontSize: 12,
-          backgroundColor: timeUnit.colour,
-          color: "white",
-          border: currentHour === timeUnit.hour ? "3px solid silver" : ""
+          backgroundColor: timeUnit.backgroundColor,
+          color: timeUnit.color,
+          border: currentHour === timeUnit.hour ? "3px solid white" : ""
         }}
       >
         {this.zeroFill(timeUnit.hour, 2)}
